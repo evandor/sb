@@ -23,6 +23,8 @@ and
 
 ng serve
 
+ng github-pages:deploy --user-page --message "Optional commit message"
+
 --- relevant links ---
 
 http://localhost:4200
