@@ -19,11 +19,18 @@ and
   npm install --save-dev angular-cli@latest
   ng init
 
+updated to rc6 and router 3.0.0-rc.1
+
+
 --- relevant commands ---
 
 ng serve
 
-ng github-pages:deploy --user-page --message "Optional commit message"
+ng github-pages:deploy --message "Optional commit message"
+
+ng g component my-new-component
+
+ng test
 
 --- relevant links ---
 
