@@ -16,47 +16,15 @@ import { AppState } from './app.service';
     './app.style.css'
   ],
   template: `
-    <nav>
-      <span>
-        <a [routerLink]=" ['./'] ">
-          Index
-        </a>
-      </span>
-      |
-      <span>
-        <a [routerLink]=" ['./home'] ">
-          Home
-        </a>
-      </span>
-      |
-      <span>
-        <a [routerLink]=" ['./detail'] ">
-          Detail
-        </a>
-      </span>
-      |
-      <span>
-        <a [routerLink]=" ['./about'] ">
-          About
-        </a>
-      </span>
-      |
-      <span>
-        <a [routerLink]=" ['./frames'] ">
-          Frames
-        </a>
-      </span>
-    </nav>
-
-    <main>
+    <!--<main>-->
       <router-outlet></router-outlet>
-    </main>
+    <!--</main>-->
 
-    <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
+    <!--<pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
 
     <footer>
       <span>WebPack Angular 2 Starter by <a [href]="url">@AngularClass</a></span>
-    </footer>
+    </footer>-->
   `
 })
 export class App {

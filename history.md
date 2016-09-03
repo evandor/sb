@@ -37,6 +37,12 @@ typescript (npm install --global typescript)
 
 npm install
 
+later:
+
+npm install --save @types/gapi.auth2
+added google signin with http://stackoverflow.com/questions/35530483/google-sign-in-for-websites-and-angular-2-using-typescript#
+
+
 --- relevant commands ---
 
 npm run server
