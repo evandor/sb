@@ -21,18 +21,27 @@ and
 
 updated to rc6 and router 3.0.0-rc.1
 
+GRGRRRRRR
+
+=== restarting project ===
+
+https://github.com/AngularClass/angular2-webpack-starter
+
+installing
+
+webpack (npm install --global webpack)
+webpack-dev-server (npm install --global webpack-dev-server)
+karma (npm install --global karma-cli)
+protractor (npm install --global protractor)
+typescript (npm install --global typescript)
+
+npm install
 
 --- relevant commands ---
 
-ng serve
-
-ng github-pages:deploy --message "Optional commit message"
-
-ng g component my-new-component
-
-ng test
+npm run server
 
 --- relevant links ---
 
-http://localhost:4200
+http://localhost:3000
 https://evandor.github.io/sb/   
