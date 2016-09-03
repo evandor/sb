@@ -40,6 +40,12 @@ import { AppState } from './app.service';
           About
         </a>
       </span>
+      |
+      <span>
+        <a [routerLink]=" ['./frames'] ">
+          Frames
+        </a>
+      </span>
     </nav>
 
     <main>
@@ -50,11 +56,6 @@ import { AppState } from './app.service';
 
     <footer>
       <span>WebPack Angular 2 Starter by <a [href]="url">@AngularClass</a></span>
-      <div>
-        <a [href]="url">
-          <img [src]="angularclassLogo" width="25%">
-        </a>
-      </div>
     </footer>
   `
 })
