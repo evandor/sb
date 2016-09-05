@@ -42,10 +42,13 @@ later:
 npm install --save @types/gapi.auth2
 added google signin with http://stackoverflow.com/questions/35530483/google-sign-in-for-websites-and-angular-2-using-typescript#
 
+https://github.com/awslabs/aws-cognito-angular2-quickstart/
 
 --- relevant commands ---
 
 npm run server
+
+/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222
 
 --- relevant links ---
 

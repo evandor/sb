@@ -17,7 +17,7 @@ import { AppState } from './app.service';
 import { Home } from './home';
 import { About } from './about';
 import { Frames } from './frames';
-import { Sidebar } from './sidebar';
+import { Sidebar,Sidebars } from './sidebar';
 import { NoContent } from './no-content';
 import { XLarge } from './home/x-large';
 
@@ -37,6 +37,7 @@ const APP_PROVIDERS = [
     About,
     Frames,
     Sidebar,
+    Sidebars,
     Home,
     NoContent,
     XLarge

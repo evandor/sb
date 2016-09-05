@@ -35,7 +35,7 @@ export class Sidebar {
         "theme": "dark",
         "onfailure": function (err) { console.log("error:" + err); }
       });
-    console.log("afterview: gapi started"); //this is printed 
+    console.log("afterview: gapi started");
   }
 
   ngOnInit() {

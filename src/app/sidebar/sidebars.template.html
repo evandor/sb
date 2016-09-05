@@ -1,0 +1,63 @@
+  <div style="float: right;">
+    <span class="g-signin2" data-onsuccess="googleSignIn"></span>
+  </div>
+  <br><br>
+  <div class="container">
+
+    <div class="row">
+      <div class="one column">&nbsp;</div>
+      <div class="ten columns">
+        <h1>Your sidebars</h1>
+      </div>
+      <div class="one column">&nbsp;</div>
+    </div>
+
+    <div class="row">
+      <div class="one column">&nbsp;</div>
+      <div class="ten columns">
+        <p *ngFor="let sidebar of sidebars">
+            <a href='#'>*</a>
+        </p>
+      </div>
+      <div class="one column">&nbsp;</div>
+    </div>
+
+    <div class="row">
+      <div class="one column">&nbsp;</div>
+      <div class="ten columns"><hr></div>
+      <div class="one column">&nbsp;</div>
+    </div>
+
+    <div class="row">
+      <div class="one column">&nbsp;</div>
+      <div class="ten columns">
+        <form>
+          <div class="row">
+            <div class="six columns">
+              <label for="newSidebarName">Name</label>
+              <input class="u-full-width" placeholder="new sidebars' name" id="newSidebarName" type="text">
+            </div>
+            <div class="six columns">
+              <label for="exampleRecipientInput">Type</label>
+              <select class="u-full-width" id="exampleRecipientInput">
+                <option value="Option 1">not used yet</option>
+                <option value="Option 2">not used yet</option>
+              </select>
+            </div>
+          </div>
+          <label for="newSidebarDesc">Description</label>
+          <textarea class="u-full-width" placeholder="Optional" id="newSidebarDesc"></textarea>
+          <button class="button-primary" id="new-sidebar-btn">Submit</button>
+        </form>
+      </div>
+      <div class="one column">&nbsp;</div>
+    </div>
+  </div>
+
+<div class="login-wrapper">
+  <div id="{{googleLoginButtonId}}"></div>
+</div>
+<div class="main-application">
+  <p>Logged in as {{userDisplayName}}!</p>
+  <p><a href="#" onclick="signOut();">Sign out</a></p>
+</div>
