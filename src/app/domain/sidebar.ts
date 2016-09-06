@@ -1,5 +1,5 @@
 export class Sidebar {
-    userId: string;
-    sidebarName: string;
-    uuid: string;
+    public userId: string;
+    public sidebarName: string;
+    public uuid: string;
 }
