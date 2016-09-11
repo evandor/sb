@@ -35,7 +35,7 @@ export class CognitoUtil {
 
 
   public static getUserPool() {
-    return null;//new AWS.CognitoIdentityServiceProvider.CognitoUserPool(CognitoUtil._POOL_DATA);
+    return new AWS.CognitoIdentityServiceProvider.CognitoUserPool(CognitoUtil._POOL_DATA);
 
   }
 

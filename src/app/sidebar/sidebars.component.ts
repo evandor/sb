@@ -6,19 +6,16 @@ import { ActivatedRoute } from '@angular/router';
 import { Sidebar } from '../domain/sidebar';
 import { DynamoDBService } from '../services/dynamodb.service';
 
-// Google's login API namespace
-declare var gapi: any;
-declare var AWS: any;
-
-console.log('`Frames` component loaded asynchronously');
+declare var gapi: any; // Google's login API namespace
+declare var AWS: any;  // Amazon
 
 @Component({
   selector: 'about',
-  //styleUrls: ['frames.style.css'],
   templateUrl: 'sidebars.template.html'
 })
 export class Sidebars {
-  localState;
+
+  //localState;
   googleLoginButtonId = "google-login-button";
   userDisplayName = "empty";
   userAuthToken = null;
@@ -27,11 +24,11 @@ export class Sidebars {
   constructor(public route: ActivatedRoute, private _zone: NgZone) {}
 
   ngOnInit() {
-    this.route
+    /*this.route
       .data
       .subscribe((data: any) => {
         this.localState = data.yourData;
-      });
+      });*/
   }
 
   ngAfterViewInit() {
