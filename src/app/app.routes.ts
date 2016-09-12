@@ -9,12 +9,14 @@ import { DataResolver } from './app.resolver';
 
 
 export const ROUTES: Routes = [
-  { path: '',         component: Home },
-  { path: 'home',     component: Home },
-  { path: 'about',    component: About },
-  { path: 'frames',   component: Frames },
-  { path: 'sidebar',  component: Sidebar },
-  { path: 'sidebars', component: Sidebars },
+  { path: '',                  component: Home },
+  { path: 'home',              component: Home },
+  { path: 'about',             component: About },
+  { path: 'frames',            component: Frames },
+  { path: 'frames/:sidebar',   component: Frames },
+  { path: 'sidebar',           component: Sidebar },
+  { path: 'sidebar/:sidebar',  component: Sidebar },
+  { path: 'sidebars',          component: Sidebars },
   {
     path: 'detail', loadChildren: () => System.import('./+detail')
   },

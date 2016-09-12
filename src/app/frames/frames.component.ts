@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy  } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs/Subscription';
+import {DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
+
 /*
  * We're loading this component asynchronously
  * We are using some magic with es6-promise-loader that will wrap the module with a Promise
@@ -13,10 +16,13 @@ console.log('`Frames` component loaded asynchronously');
   styleUrls: ['frames.style.css'],
   templateUrl: 'frames.template.html'
 })
-export class Frames {
+export class Frames  implements OnInit, OnDestroy   {
   localState;
-  constructor(public route: ActivatedRoute) {
+  private sub: Subscription;
+  private uuid: string = "d56cc24e-6326-4d11-90f6-44c5c997f5c3";
+  private url: SafeResourceUrl;
 
+  constructor(public route: ActivatedRoute, private domSanitizer : DomSanitizer) {
   }
 
   ngOnInit() {
@@ -27,26 +33,15 @@ export class Frames {
         this.localState = data.yourData;
       });
 
-    console.log('hello `Frames` component');
-    // static data that is bundled
-    // var mockData = require('assets/mock-data/mock-data.json');
-    // console.log('mockData', mockData);
-    // if you're working with mock data you can also use http.get('assets/mock-data/mock-data.json')
-    // this.asyncDataWithWebpack();
+    this.sub = this.route.params.subscribe(params => {
+      this.uuid = params['sidebar'];
+      console.log("params: " + this.uuid);
+      this.url = this.domSanitizer.bypassSecurityTrustResourceUrl('/sidebar/' + this.uuid);
+    });
   }
-  asyncDataWithWebpack() {
-    // you can also async load mock data with 'es6-promise-loader'
-    // you would do this if you don't want the mock-data bundled
-    // remember that 'es6-promise-loader' is a promise
-    // var asyncMockDataPromiseFactory = require('es6-promise!assets/mock-data/mock-data.json');
-    // setTimeout(() => {
-    //
-    //   let asyncDataPromise = asyncMockDataPromiseFactory();
-    //   asyncDataPromise.then(json => {
-    //     console.log('async mockData', json);
-    //   });
-    //
-    // });
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 
 }

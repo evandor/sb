@@ -16,7 +16,7 @@
     <div class="one column">&nbsp;</div>
     <div class="ten columns">
       <div *ngFor="let sidebar of sidebars">
-        <a href='/#/frames?sidebar={{sidebar.uuid}}' target="_top">{{sidebar.sidebarName}}</a>
+        <a [routerLink]="['/frames',sidebar.uuid]" target="_top">{{sidebar.sidebarName}}</a>
       </div>
     </div>
     <div class="one column">&nbsp;</div>
