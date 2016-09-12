@@ -44,6 +44,11 @@ added google signin with http://stackoverflow.com/questions/35530483/google-sign
 
 https://github.com/awslabs/aws-cognito-angular2-quickstart/
 
+
+jquery with angular2
+
+  http://4dev.tech/2016/05/using-jquery-with-angular2/
+
 --- relevant commands ---
 
 npm run server

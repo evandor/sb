@@ -27,8 +27,6 @@ export class Home {
   }
 
   ngOnInit() {
-    console.log('hello `Home` component');
-    // this.title.getData().subscribe(data => this.data = data);
   }
 
   submitState(value) {

@@ -14,21 +14,14 @@ declare var AWS: any;  // Amazon
   templateUrl: 'sidebars.template.html'
 })
 export class Sidebars {
-
-  //localState;
   googleLoginButtonId = "google-login-button";
   userDisplayName = "empty";
   userAuthToken = null;
   sidebars: Array<Sidebar> = [];
 
-  constructor(public route: ActivatedRoute, private _zone: NgZone) {}
+  constructor(public route: ActivatedRoute, private _zone: NgZone) { }
 
   ngOnInit() {
-    /*this.route
-      .data
-      .subscribe((data: any) => {
-        this.localState = data.yourData;
-      });*/
   }
 
   ngAfterViewInit() {
@@ -40,11 +33,10 @@ export class Sidebars {
         "theme": "dark",
         "onfailure": function (err) { console.log("error:" + err); }
       });
-    console.log("afterview: gapi started");
   }
 
   fetchSidebars(id) {
-    console.log("fetching sidebar for " + id);
+    //console.log("fetching sidebar for " + id);
     var db = new AWS.DynamoDB.DocumentClient();
     console.log(db);
     var item = {
@@ -56,14 +48,10 @@ export class Sidebars {
     };
 
     DynamoDBService.getSidebars(id, this.sidebars);
-
-    console.log("result");
-    console.log(this.sidebars);
-
   }
 
   onGoogleLoginSuccess = (loggedInUser) => {
-    console.log(loggedInUser);
+    //console.log(loggedInUser);
     this._zone.run(() => {
       this.userAuthToken = loggedInUser.getAuthResponse().id_token;
       this.userDisplayName = loggedInUser.getBasicProfile().getName();

@@ -13,7 +13,6 @@ export class Detail {
   }
 
   ngOnInit() {
-    console.log('hello `Detail` component');
   }
 
 }

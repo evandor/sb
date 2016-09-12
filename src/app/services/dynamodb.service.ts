@@ -34,6 +34,30 @@ export class DynamoDBService {
         }
     }
 
+    static getBookmarks(id: string, mapArray: Array<Sidebar>) {
+        var params = {
+            TableName: 'bookmark',
+            KeyConditionExpression: "sidebarUUID = :sidebarUUID",
+            ExpressionAttributeValues: {
+                ":sidebarUUID": id
+            }
+        };
+        var docClient = new AWS.DynamoDB.DocumentClient();
+        docClient.query(params, onQuery);
+
+        function onQuery(err, data) {
+            if (err) {
+                console.error("Unable to query the table. Error JSON:", JSON.stringify(err, null, 2));
+            } else {
+                console.log("Query succeeded.");
+                data.Items.forEach(function (logitem) {
+                    console.log(logitem);
+                    mapArray.push({ sidebarName: logitem.sidebarName, uuid: logitem.uuid, userId: logitem.userId });
+                });
+            }
+        }
+    }
+
     static writeLogEntry(type: string) {
         let date = new Date().toString();
         console.log("Writing log entry..type:" + type + " id: " + AWS.config.credentials.params.IdentityId + " date: " + date);

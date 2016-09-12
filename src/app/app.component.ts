@@ -20,12 +20,10 @@ export class App {
   name = 'Angular 2 Webpack Starter';
   url = 'https://twitter.com/AngularClass';
 
-  constructor(public appState: AppState) {
-    //AwsUtil.initAwsService(null);
+  constructor() {
   }
 
   ngOnInit() {
-    console.log('Initial App State', this.appState.state);
   }
 
 }
