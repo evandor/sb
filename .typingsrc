@@ -1,0 +1,5 @@
+{
+    "proxy" : "http://192.168.11.140:8080/",
+    "rejectUnauthorized" : false
+	}
+
