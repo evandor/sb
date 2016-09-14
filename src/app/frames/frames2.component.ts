@@ -1,9 +1,15 @@
-import { Component, NgZone, OnInit, OnDestroy } from '@angular/core';
+import { Component, NgZone, OnInit, OnDestroy,
+  Input,
+  trigger,
+  state,
+  style,
+  transition,
+  animate } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
 import { DynamoDBService } from '../services/dynamodb.service';
-
+import { AppState } from '../domain/appstate';
 
 declare var gapi: any; // Google's login API namespace
 declare var AWS: any;  // Amazon
@@ -13,13 +19,28 @@ declare var jQuery: any;
 @Component({
   selector: 'frames2',
   styleUrls: ['frames.style.css'],
-  templateUrl: 'frames2.template.html'
+  templateUrl: 'frames2.template.html',
+  animations: [
+    trigger('heroState', [
+      state('inactive', style({
+        backgroundColor: '#eee',
+        transform: 'scale(1)'
+      })),
+      state('active',   style({
+        backgroundColor: '#cfd8dc',
+        transform: 'scale(1.1)'
+      })),
+      transition('inactive => active', animate('100ms ease-in')),
+      transition('active => inactive', animate('100ms ease-out'))
+    ])
+  ]
 })
 export class Frames2 implements OnInit, OnDestroy {
   localState;
   googleLoginButtonId = "google-login-button";
   userDisplayName = "empty";
   userAuthToken = null;
+  appstate: AppState;
 
   private sub: Subscription;
   private uuid: string = "d56cc24e-6326-4d11-90f6-44c5c997f5c3";
@@ -28,6 +49,7 @@ export class Frames2 implements OnInit, OnDestroy {
   private url: SafeResourceUrl;
 
   constructor(public route: ActivatedRoute, private domSanitizer: DomSanitizer, private _zone: NgZone) {
+    this.appstate = new AppState();
   }
 
   ngOnInit() {
