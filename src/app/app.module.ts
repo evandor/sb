@@ -16,7 +16,7 @@ import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState } from './app.service';
 import { Home } from './home';
 import { About } from './about';
-import { Frames } from './frames';
+import { Frames,Frames2 } from './frames';
 import { Sidebar,Sidebars } from './sidebar';
 import { NoContent } from './no-content';
 import { XLarge } from './home/x-large';
@@ -36,6 +36,7 @@ const APP_PROVIDERS = [
     App,
     About,
     Frames,
+    Frames2,
     Sidebar,
     Sidebars,
     Home,
