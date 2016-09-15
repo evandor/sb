@@ -1,10 +1,4 @@
-import { Component, NgZone, OnInit, OnDestroy,
-  Input,
-  trigger,
-  state,
-  style,
-  transition,
-  animate } from '@angular/core';
+import { Component, NgZone, OnInit, OnDestroy, Input, trigger, state, style, transition, animate } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
@@ -23,13 +17,13 @@ declare var jQuery: any;
   animations: [
     trigger('heroState', [
       state('inactive', style({
-        backgroundColor: '#eee',
-        width:'200px'
+        backgroundColor: 'white',
+        width: '200px'
         //transform: 'scale(1)'
       })),
-      state('active',   style({
-        backgroundColor: 'white',
-        width:'400%'
+      state('active', style({
+        backgroundColor: 'gray',
+        width: '800px'
         //transform: 'scale(1.1)'
       })),
       transition('inactive => active', animate('200ms ease-in')),
@@ -43,6 +37,7 @@ export class Frames2 implements OnInit, OnDestroy {
   userDisplayName = "empty";
   userAuthToken = null;
   appstate: AppState;
+  authenticated: boolean = false;
 
   private sub: Subscription;
   private uuid: string = "d56cc24e-6326-4d11-90f6-44c5c997f5c3";
@@ -72,21 +67,6 @@ export class Frames2 implements OnInit, OnDestroy {
     jQuery("#accordion").accordion();
   }
 
-  /*ngOnInit() {
-    this.route
-      .data
-      .subscribe((data: any) => {
-        // your resolved data from route
-        this.localState = data.yourData;
-      });
-
-    this.sub = this.route.params.subscribe(params => {
-      this.uuid = params['sidebar'];
-      console.log("params: " + this.uuid);
-      this.url = this.domSanitizer.bypassSecurityTrustResourceUrl('/sidebar/' + this.uuid);
-    });
-  }*/
-
   ngOnDestroy() {
     this.sub.unsubscribe();
   }
@@ -98,7 +78,7 @@ export class Frames2 implements OnInit, OnDestroy {
     console.log(this.bookmarks);
   }
   onGoogleLoginSuccess = (loggedInUser) => {
-    //console.log(loggedInUser);
+    this.authenticated = true;
     this._zone.run(() => {
       this.userAuthToken = loggedInUser.getAuthResponse().id_token;
       this.userDisplayName = loggedInUser.getBasicProfile().getName();
@@ -114,5 +94,13 @@ export class Frames2 implements OnInit, OnDestroy {
       this.fetchBookmarks("d56cc24e-6326-4d11-90f6-44c5c997f5c3");
     });
 
+  }
+
+  signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      this.authenticated = false;
+      console.log('User signed out.');
+    });
   }
 }

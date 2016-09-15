@@ -13,13 +13,19 @@
             <div id="accordion">
                 <h3>Manage Sidebars</h3>
                 <div>
+                    <div><a href="/assets/static/index.html" target="content">sidebar home</a></div>
+                    <div><a href="/sidebars" target="content">switch sidebar</a></div>
+                </div>
+                <h3>Fixed</h3>
+                <div>
                     <div>
-                        <a href="/sidebars" target="content">switch sidebar</a>
+                        <a href="http://jenkins.twentyeleven.de/job/skysail.doc/ws/doc/gen/index.html" target="content">skysail</a>
                     </div>
                 </div>
                 <h3>Section 3</h3>
                 <div>
                     <div><a href="http://www.spiegel.de" target="content">Spiegel</a></div>
+                    <div><a href="http://www.heise.de" target="content">Heise</a></div>
                 </div>
                 <h3>Section 4</h3>
                 <div>
@@ -37,13 +43,13 @@
     <span class="g-sig nin2" data-onsuccess="google SignIn"></span>
     <a href="#" onclick="signOut();">Sign out</a>
 </div>-->
-
-            <div class="login-wrapper">
+            <br><br>
+            <div *ngIf="!authenticated" class="login-wrapper">
                 <div id="{{googleLoginButtonId}}"></div>
             </div>
             <div class="main-application">
                 <p>Logged in as {{userDisplayName}}!</p>
-                <p><a href="#" onclick="signOut();" target="_top">Sign out</a></p>
+                <p *ngIf="authenticated"><a (click)="signOut()" target="_top">Sign out</a></p>
             </div>
 
             <div>{{uuid}}</div>
