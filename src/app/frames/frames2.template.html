@@ -1,11 +1,9 @@
-
-<ul>
-    <li [@heroState]="appstate.state" (click)="appstate.toggleState()">test</li>
-</ul>
-
 <div class='wrapper'>
     <div class='container-left'>
-        <div style="height: 100%; border:none; border-right: 1px dashed gray;">
+        <div [@heroState]="appstate.state" style="height: 100%; border:none; border-right: 1px dashed gray;">
+            <ul>
+                <li  (click)="appstate.toggleState()">test</li>
+            </ul>
             <fieldset>
                 <input type="text" title="search" size="6" class="text-input" id="filter" value="" />
                 <span id="filter-count"></span>

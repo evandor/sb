@@ -24,14 +24,16 @@ declare var jQuery: any;
     trigger('heroState', [
       state('inactive', style({
         backgroundColor: '#eee',
-        transform: 'scale(1)'
+        width:'200px'
+        //transform: 'scale(1)'
       })),
       state('active',   style({
-        backgroundColor: '#cfd8dc',
-        transform: 'scale(1.1)'
+        backgroundColor: 'white',
+        width:'400%'
+        //transform: 'scale(1.1)'
       })),
-      transition('inactive => active', animate('100ms ease-in')),
-      transition('active => inactive', animate('100ms ease-out'))
+      transition('inactive => active', animate('200ms ease-in')),
+      transition('active => inactive', animate('200ms ease-out'))
     ])
   ]
 })
