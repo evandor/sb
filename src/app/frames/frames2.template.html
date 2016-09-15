@@ -2,7 +2,7 @@
     <div class='container-left'>
         <div [@heroState]="appstate.state" style="height: 100%; border:none; border-right: 1px dashed gray;">
             <ul>
-                <li  (click)="appstate.toggleState()">test</li>
+                <li (click)="appstate.toggleState()">test</li>
             </ul>
             <fieldset>
                 <input type="text" title="search" size="6" class="text-input" id="filter" value="" />
@@ -16,25 +16,16 @@
                     <div><a href="/assets/static/index.html" target="content">sidebar home</a></div>
                     <div><a href="/sidebars" target="content">switch sidebar</a></div>
                 </div>
-                <h3>Fixed</h3>
+                <h3>Skysail</h3>
                 <div>
-                    <div>
-                        <a href="http://jenkins.twentyeleven.de/job/skysail.doc/ws/doc/gen/index.html" target="content">skysail</a>
-                    </div>
+                    <div><a href="http://jenkins.twentyeleven.de/job/skysail.doc/ws/doc/gen/index.html" target="content">skysail</a></div>
+                    <div><a href="http://jenkins.twentyeleven.de/" target="content">jenkins</a></div>
                 </div>
-                <h3>Section 3</h3>
+                <h3>News</h3>
                 <div>
                     <div><a href="http://www.spiegel.de" target="content">Spiegel</a></div>
                     <div><a href="http://www.heise.de" target="content">Heise</a></div>
-                </div>
-                <h3>Section 4</h3>
-                <div>
-                    <p>
-                        Cras dictum.
-                    </p>
-                    <p>
-                        Suspendisse eu nisl.
-                    </p>
+                    <div><a href="http://www.dzone.com" target="content">Dzone</a></div>
                 </div>
             </div>
 
@@ -54,17 +45,17 @@
 
             <div>{{uuid}}</div>
 
-            <!--<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<! -- sidebar -- >
-<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1335741973265162" data-ad-slot="6126510968" data-ad-format="auto"></ins>
-<script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>-->
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <! -- sidebar -- >
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-1335741973265162" data-ad-slot="6126510968" data-ad-format="auto"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
         </div>
     </div>
     <div class='container-right'>
         <!--<iframe src="/sidebars" id="content" name="content" style="height: 100%; border: none"></iframe>-->
         <iframe src="/assets/static/index.html" id="content" name="content" style="height: 100%; border: none"></iframe>
-        
+
     </div>
 </div>
