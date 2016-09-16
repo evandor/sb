@@ -4,6 +4,8 @@ import { Subscription } from 'rxjs/Subscription';
 import { DomSanitizer, SafeResourceUrl } from "@angular/platform-browser";
 import { DynamoDBService } from '../services/dynamodb.service';
 import { AppState } from '../domain/appstate';
+import { Sidebar } from '../domain/sidebar';
+
 
 declare var gapi: any; // Google's login API namespace
 declare var AWS: any;  // Amazon
@@ -32,7 +34,8 @@ declare var jQuery: any;
 export class Frames2 implements OnInit, OnDestroy {
   localState;
   googleLoginButtonId = "google-login-button";
-  userDisplayName = "empty";
+  userDisplayName = "not logged in...";
+  userPic = "";
   userAuthToken = null;
   appstate: AppState;
   authenticated: boolean = false;
@@ -41,6 +44,8 @@ export class Frames2 implements OnInit, OnDestroy {
   private uuid: string = "d56cc24e-6326-4d11-90f6-44c5c997f5c3";
   bookmarks: Array<any> = [];
   private url: SafeResourceUrl;
+    sidebars: Array<Sidebar> = [];
+
 
   constructor(public route: ActivatedRoute, private domSanitizer: DomSanitizer, private _zone: NgZone) {
     this.appstate = new AppState();
@@ -77,11 +82,27 @@ export class Frames2 implements OnInit, OnDestroy {
     DynamoDBService.getBookmarks(id, this.bookmarks);
     console.log(this.bookmarks);
   }
-  onGoogleLoginSuccess = (loggedInUser) => {
+
+  fetchSidebars(id) {
+    //console.log("fetching sidebar for " + id);
+    var db = new AWS.DynamoDB.DocumentClient();
+    console.log(db);
+    var item = {
+      TableName: 'sidebar',
+      KeyConditionExpression: "userId = :userId",
+      ExpressionAttributeValues: {
+        ":userId": id
+      }
+    };
+
+    DynamoDBService.getSidebars(id, this.sidebars);
+  }
+  onGoogleLoginSuccess = (loggedInUser) => { 
     this.authenticated = true;
     this._zone.run(() => {
       this.userAuthToken = loggedInUser.getAuthResponse().id_token;
       this.userDisplayName = loggedInUser.getBasicProfile().getName();
+      this.userPic = loggedInUser.getBasicProfile().getImageUrl();
       AWS.config.update({
         region: 'us-east-1',
         credentials: new AWS.CognitoIdentityCredentials({
@@ -92,6 +113,7 @@ export class Frames2 implements OnInit, OnDestroy {
         })
       })
       this.fetchBookmarks("d56cc24e-6326-4d11-90f6-44c5c997f5c3");
+      this.fetchSidebars("us-east-1:129ab219-08ca-4561-946f-938cb4027fb1"); // user
     });
 
   }
