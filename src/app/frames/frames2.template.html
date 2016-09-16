@@ -1,6 +1,6 @@
 <div class='wrapper'>
     <div class='container-left'>
-        <div [@heroState]="appstate.state" style="height: 100%; border:none; border-right: 1px dashed gray;">
+        <div [@heroState]="appstate.state" class="inner-left">
             <!--<fieldset>
                 <input type="text" title="search" size="6" class="text-input" id="filter" value="" />
                 <span id="filter-count"></span>
@@ -23,6 +23,11 @@
                     <div><a href="http://jenkins.twentyeleven.de/job/skysail.doc/ws/doc/gen/index.html" target="content">skysail</a></div>
                     <div><a href="http://jenkins.twentyeleven.de/" target="_jenkins">jenkins</a></div>
                     <div><a href="http://prototypr.int.skysail.io/" target="content">Prototypr (int)</a></div>
+                    <div><a href="http://demo.int.skysail.io/" target="content">Demo App (int)</a></div>
+                </div>
+                <h3>Development</h3>
+                <div>
+                    <div><a href="https://console.aws.amazon.com" target="_amazonaws">AWS Console</a></div>
                 </div>
                 <h3>News</h3>
                 <div>
@@ -57,7 +62,7 @@
             </script>
         </div>
     </div>
-    <div class='container-right'>
+    <div id='container-right'>
         <!--<iframe src="/sidebars" id="content" name="content" style="height: 100%; border: none"></iframe>-->
         <iframe src="/assets/static/index.html" id="content" name="content" style="height: 100%; border: none"></iframe>
 

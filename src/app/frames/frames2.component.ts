@@ -61,7 +61,10 @@ export class Frames2 implements OnInit, OnDestroy {
         "theme": "dark",
         "onfailure": function (err) { console.log("error:" + err); }
       });
-    jQuery("#accordion").accordion();
+    jQuery("#accordion").accordion({
+      collapsible: true,
+      heightStyle: "content"
+    });
   }
 
   ngOnDestroy() {
