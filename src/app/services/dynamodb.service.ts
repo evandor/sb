@@ -34,12 +34,12 @@ export class DynamoDBService {
         }
     }
 
-    static getBookmarks(id: string, mapArray: Array<Sidebar>) {
+    static getBookmarks(id: string, mapArray: Array<any>) {
         var params = {
-            TableName: 'bookmark',
-            KeyConditionExpression: "sidebarUUID = :sidebarUUID",
+            TableName: 'category',
+            KeyConditionExpression: "sidebarUuid = :sidebarUuid",
             ExpressionAttributeValues: {
-                ":sidebarUUID": id
+                ":sidebarUuid": id
             }
         };
         var docClient = new AWS.DynamoDB.DocumentClient();
@@ -52,7 +52,7 @@ export class DynamoDBService {
                 console.log("Query succeeded.");
                 data.Items.forEach(function (logitem) {
                     console.log(logitem);
-                    mapArray.push({ sidebarName: logitem.sidebarName, uuid: logitem.uuid, userId: logitem.userId });
+                    mapArray.push({ sidebarName: logitem.name, uuid: logitem.uuid, bookmarks: logitem.bookmarks });
                 });
             }
         }

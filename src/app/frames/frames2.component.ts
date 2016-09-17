@@ -44,7 +44,7 @@ export class Frames2 implements OnInit, OnDestroy {
   private uuid: string = "d56cc24e-6326-4d11-90f6-44c5c997f5c3";
   bookmarks: Array<any> = [];
   private url: SafeResourceUrl;
-    sidebars: Array<Sidebar> = [];
+  sidebars: Array<Sidebar> = [];
 
 
   constructor(public route: ActivatedRoute, private domSanitizer: DomSanitizer, private _zone: NgZone) {
@@ -77,8 +77,7 @@ export class Frames2 implements OnInit, OnDestroy {
   }
 
   fetchBookmarks(id) {
-    console.log("fetching sidebar " + id);
-    var db = new AWS.DynamoDB.DocumentClient();
+    console.log("fetching bookmarks for sidebar " + id);
     DynamoDBService.getBookmarks(id, this.bookmarks);
     console.log(this.bookmarks);
   }
@@ -97,7 +96,7 @@ export class Frames2 implements OnInit, OnDestroy {
 
     DynamoDBService.getSidebars(id, this.sidebars);
   }
-  onGoogleLoginSuccess = (loggedInUser) => { 
+  onGoogleLoginSuccess = (loggedInUser) => {
     this.authenticated = true;
     this._zone.run(() => {
       this.userAuthToken = loggedInUser.getAuthResponse().id_token;
@@ -119,10 +118,15 @@ export class Frames2 implements OnInit, OnDestroy {
   }
 
   signOut() {
+    console.log("signing out...");
     var auth2 = gapi.auth2.getAuthInstance();
+    var context = this;
     auth2.signOut().then(function () {
-      this.authenticated = false;
       console.log('User signed out.');
+      context._zone.run(() => {
+        context.userDisplayName = "logged out";
+        context.authenticated = false;
+      });
     });
   }
 }
