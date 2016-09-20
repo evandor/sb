@@ -49,6 +49,9 @@ jquery with angular2
 
   http://4dev.tech/2016/05/using-jquery-with-angular2/
 
+
+https://github.com/mgechev/angular2-seed/wiki/Deploying-prod-build-to-Apache-2
+
 --- relevant commands ---
 
 npm run server
