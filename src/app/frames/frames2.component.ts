@@ -46,7 +46,6 @@ export class Frames2 implements OnInit, OnDestroy {
   private url: SafeResourceUrl;
   sidebars: Array<Sidebar> = [];
 
-
   constructor(public route: ActivatedRoute, private domSanitizer: DomSanitizer, private _zone: NgZone) {
     this.appstate = new AppState();
   }
@@ -55,6 +54,8 @@ export class Frames2 implements OnInit, OnDestroy {
     this.sub = this.route.params.subscribe(params => {
       this.uuid = params['sidebar'];
     });
+    //var test = localStorage.getItem("hi");
+    //alert(test);
   }
 
   ngAfterViewInit() {
@@ -128,5 +129,9 @@ export class Frames2 implements OnInit, OnDestroy {
         context.authenticated = false;
       });
     });
+  }
+
+  createCategory(id: string, value: string) {
+    alert(id + ": " + value);
   }
 }

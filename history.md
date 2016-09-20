@@ -52,6 +52,10 @@ jquery with angular2
 
 https://github.com/mgechev/angular2-seed/wiki/Deploying-prod-build-to-Apache-2
 
+http://stackoverflow.com/questions/35320302/how-to-use-angular2-local-storage-module-in-angular-2-app:
+
+  npm install --save angular2-localstorage
+
 --- relevant commands ---
 
 npm run server
